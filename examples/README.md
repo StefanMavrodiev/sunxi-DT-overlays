@@ -32,6 +32,13 @@ Compared to the other ones in this repository these are "standalone" - no fixup 
 - using external pull-up resistor on the interrupt line is highly recommended if the module doesn't have one
 
 
+#### i2c-atecc508a
+- overlay for atecc508a crypto engine connected to the I2C bus
+- binding documentation:
+[atmel-crypto.txt](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/Documentation/devicetree/bindings/crypto/atmel-crypto.txt)
+- may require activating the I2C bus by a kernel provided overlay (i.e. `overlays=i2c2`) to set pin muxing
+
+
 #### i2c-edt-ft5x06.dts
 - overlay for a touch screen connected to the I2C bus
 - bindings documentation: [edt-ft5x06.txt](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/Documentation/devicetree/bindings/input/touchscreen/edt-ft5x06.txt)
