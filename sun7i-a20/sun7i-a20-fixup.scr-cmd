@@ -45,6 +45,14 @@ if test -n "${param_spidev_spi_bus}"; then
 	env delete tmp_spi_path
 fi
 
+if test "${param_spi0_bus_pins}" = "b"; then
+	fdt get value tmp_phandle1 /soc@01c00000/pinctrl@01c20800/spi0@1 phandle
+	fdt get value tmp_phandle2 /soc@01c00000/pinctrl@01c20800/spi0_cs0@1 phandle
+	fdt set /soc@01c00000/spi@01c05000 pinctrl-0 "<${tmp_phandle1}>"
+	fdt set /soc@01c00000/spi@01c05000 pinctrl-1 "<${tmp_phandle2}>"
+	env delete tmp_phandle1 tmp_phandle2
+fi
+
 if test "${param_spi2_bus_pins}" = "b"; then
 	fdt get value tmp_phandle1 /soc@01c00000/pinctrl@01c20800/spi2@1 phandle
 	fdt get value tmp_phandle2 /soc@01c00000/pinctrl@01c20800/spi2_cs0@1 phandle
